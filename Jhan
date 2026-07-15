@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ahmad "Jhan" Kadiri — eCommerce Listing Specialist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EEF0E9;
+    --bg2:#F6F7F1;
+    --ink:#17231D;
+    --ink-soft:#4B564D;
+    --primary:#2F6B4F;
+    --primary-deep:#1E4936;
+    --accent:#E0862E;
+    --line:#CBCFC2;
+    --card:#FCFCF9;
+    --white:#FFFFFF;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:
+      linear-gradient(var(--bg2) 1px, transparent 1px) 0 0/100% 42px,
+      linear-gradient(90deg, var(--bg2) 1px, transparent 1px) 0 0/42px 100%,
+      var(--bg);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .mono{font-family:'IBM Plex Mono', monospace;}
+
+  a{color:inherit;text-decoration:none;}
+
+  ::selection{background:var(--accent);color:var(--white);}
+
+  /* ---------- FOCUS STATES ---------- */
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+  }
+
+  /* ---------- LAYOUT ---------- */
+  .wrap{
+    max-width:1040px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  header.nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(238,240,233,0.88);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  header.nav .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:64px;
+  }
+  .brand{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:700;
+    font-size:20px;
+    letter-spacing:0.02em;
+    text-transform:uppercase;
+  }
+  .brand .dot{color:var(--accent);}
+  nav.links{display:flex;gap:28px;}
+  nav.links a{
+    font-size:13px;
+    font-family:'IBM Plex Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--ink-soft);
+    transition:color .15s ease;
+  }
+  nav.links a:hover{color:var(--primary-deep);}
+
+  /* ---------- HERO / LISTING CARD ---------- */
+  .hero{
+    padding:72px 0 40px;
+  }
+  .eyebrow-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:var(--primary);
+    color:var(--white);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    padding:5px 10px;
+    border-radius:2px;
+  }
+  .badge::before{
+    content:"";
+    width:6px;height:6px;
+    border-radius:50%;
+    background:#8BE0B0;
+    display:inline-block;
+  }
+  .sku{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    letter-spacing:0.04em;
+  }
+
+  .listing-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:4px;
+    box-shadow:0 1px 0 var(--line);
+    overflow:hidden;
+  }
+
+  .listing-top{
+    padding:40px 40px 30px;
+    border-bottom:1px dashed var(--line);
+  }
+
+  h1.title{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:800;
+    font-size:clamp(34px, 5.2vw, 58px);
+    line-height:1.02;
+    letter-spacing:-0.01em;
+    text-transform:uppercase;
+    max-width:780px;
+  }
+  h1.title span.accent{color:var(--accent);}
+
+  .role{
+    margin-top:14px;
+    font-size:17px;
+    color:var(--ink-soft);
+    max-width:620px;
+  }
+
+  .platform-tags{
+    margin-top:22px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .ptag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    padding:6px 11px;
+    border:1px solid var(--primary);
+    color:var(--primary-deep);
+    border-radius:20px;
+    background:rgba(47,107,79,0.06);
+  }
+
+  .cta-row{
+    margin-top:28px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    padding:13px 22px;
+    border-radius:2px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .btn-primary{
+    background:var(--ink);
+    color:var(--white);
+  }
+  .btn-primary:hover{background:var(--primary-deep); transform:translateY(-1px);}
+  .btn-ghost{
+    border:1px solid var(--ink);
+    color:var(--ink);
+  }
+  .btn-ghost:hover{background:var(--ink); color:var(--white); transform:translateY(-1px);}
+
+  /* spec table like a marketplace "item specifics" block */
+  .specs{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+  }
+  .spec{
+    padding:22px 40px;
+    border-right:1px dashed var(--line);
+  }
+  .spec:last-child{border-right:none;}
+  .spec .k{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--ink-soft);
+    margin-bottom:6px;
+  }
+  .spec .v{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:700;
+    font-size:26px;
+  }
+
+  /* ---------- PHOTO + RESUME (hero add-ons) ---------- */
+  .hero-top-row{
+    display:flex;
+    gap:28px;
+    align-items:flex-start;
+  }
+  .photo-slot{
+    flex:0 0 auto;
+    width:96px;
+    height:96px;
+    border-radius:6px;
+    border:2px dashed var(--line);
+    background:var(--bg2);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    color:var(--ink-soft);
+    line-height:1.3;
+    padding:6px;
+  }
+  .resume-btn{
+    border:1px dashed var(--accent);
+    color:var(--accent);
+    background:transparent;
+  }
+  .resume-btn:hover{background:var(--accent); color:var(--white);}
+
+  .rate-row{
+    margin-top:16px;
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+  }
+  .rate-row b{color:var(--ink);}
+  .fillin{
+    color:var(--accent);
+    border-bottom:1px dashed var(--accent);
+  }
+
+  /* ---------- STATS / RESULTS ---------- */
+  .stats-row{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:0;
+    border:1px solid var(--line);
+    border-radius:4px;
+    overflow:hidden;
+    background:var(--card);
+  }
+  .stat{
+    padding:26px 22px;
+    border-right:1px dashed var(--line);
+    text-align:center;
+  }
+  .stat:last-child{border-right:none;}
+  .stat .num{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:800;
+    font-size:36px;
+    color:var(--primary-deep);
+  }
+  .stat .lbl{
+    margin-top:6px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- SAMPLE WORK ---------- */
+  .work-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:18px;
+  }
+  .work-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .work-thumb{
+    height:150px;
+    background:
+      repeating-linear-gradient(45deg, var(--bg2), var(--bg2) 10px, var(--bg) 10px, var(--bg) 20px);
+    border-bottom:1px dashed var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--ink-soft);
+    text-align:center;
+    padding:10px;
+  }
+  .work-body{padding:16px 18px;}
+  .work-body h4{
+    font-family:'Barlow Condensed', sans-serif;
+    font-size:17px;
+    text-transform:uppercase;
+    font-weight:700;
+  }
+  .work-body p{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    margin-top:6px;
+  }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testi-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:18px;
+  }
+  .testi-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:26px 28px;
+  }
+  .testi-stars{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--accent);
+    font-size:13px;
+    letter-spacing:2px;
+  }
+  .testi-card p.quote{
+    margin-top:12px;
+    font-size:14.5px;
+    color:var(--ink-soft);
+    font-style:italic;
+  }
+  .testi-who{
+    margin-top:14px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    border-top:1px dashed var(--line);
+    padding-top:12px;
+  }
+
+  /* ---------- CERTIFICATIONS ---------- */
+  .cert-list{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    border:1px solid var(--line);
+    border-radius:4px;
+    background:var(--card);
+    overflow:hidden;
+  }
+  .cert-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 24px;
+    border-bottom:1px dashed var(--line);
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .cert-row:last-child{border-bottom:none;}
+  .cert-row .name{
+    font-size:15px;
+    font-weight:500;
+  }
+  .cert-row .meta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:64px 0;}
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:30px;
+  }
+  .section-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--accent);
+  }
+  h2{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:700;
+    text-transform:uppercase;
+    font-size:30px;
+    letter-spacing:0.01em;
+  }
+  .section-line{
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+
+  /* About */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    gap:40px;
+  }
+  .about-body p{
+    color:var(--ink-soft);
+    font-size:16px;
+    max-width:60ch;
+  }
+  .about-body p + p{margin-top:14px;}
+
+  .quote-tag{
+    background:var(--primary);
+    color:var(--white);
+    padding:22px;
+    border-radius:4px;
+    font-family:'Barlow Condensed', sans-serif;
+    font-size:20px;
+    font-weight:600;
+    line-height:1.25;
+    position:relative;
+  }
+  .quote-tag::before{
+    content:"";
+    position:absolute;
+    left:22px; top:-9px;
+    width:16px;height:16px;
+    background:var(--primary);
+    transform:rotate(45deg);
+    border-radius:2px;
+  }
+
+  /* Skills as catalog chips */
+  .chip-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .chip{
+    background:var(--card);
+    border:1px solid var(--line);
+    padding:10px 16px;
+    border-radius:3px;
+    font-size:14px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .chip:hover{border-color:var(--primary); transform:translateY(-2px);}
+  .chip .idx{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--accent);
+  }
+
+  /* Process - real 3-step workflow */
+  .process{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:0;
+    border:1px solid var(--line);
+    border-radius:4px;
+    overflow:hidden;
+    background:var(--card);
+  }
+  .proc-step{
+    padding:30px 28px;
+    border-right:1px dashed var(--line);
+    position:relative;
+  }
+  .proc-step:last-child{border-right:none;}
+  .proc-num{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:800;
+    font-size:44px;
+    color:var(--line);
+    line-height:1;
+  }
+  .proc-step h3{
+    font-family:'Barlow Condensed', sans-serif;
+    text-transform:uppercase;
+    font-size:19px;
+    margin:12px 0 8px;
+    letter-spacing:0.01em;
+  }
+  .proc-step p{
+    font-size:14px;
+    color:var(--ink-soft);
+  }
+  .proof-slot{
+    margin-top:16px;
+    border:1.5px dashed var(--line);
+    border-radius:4px;
+    padding:14px 12px;
+    text-align:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    color:var(--ink-soft);
+    line-height:1.5;
+    background:var(--bg2);
+  }
+  .proof-slot .play{
+    display:inline-block;
+    width:0; height:0;
+    border-top:5px solid transparent;
+    border-bottom:5px solid transparent;
+    border-left:8px solid var(--accent);
+    margin-right:4px;
+    vertical-align:middle;
+  }
+
+  /* Experience listing card */
+  .exp-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:30px 34px;
+    display:flex;
+    justify-content:space-between;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+  .exp-left h3{
+    font-family:'Barlow Condensed', sans-serif;
+    font-size:22px;
+    text-transform:uppercase;
+    font-weight:700;
+  }
+  .exp-left .sub{
+    color:var(--ink-soft);
+    font-size:14px;
+    margin-top:4px;
+  }
+  .exp-tags{
+    margin-top:14px;
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+  .exp-tags span{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    color:var(--primary-deep);
+    background:rgba(47,107,79,0.08);
+    padding:4px 9px;
+    border-radius:20px;
+  }
+  .exp-right{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    text-align:right;
+    white-space:nowrap;
+  }
+
+  /* Contact - checkout style */
+  .checkout{
+    background:var(--ink);
+    color:var(--white);
+    border-radius:6px;
+    padding:52px 46px;
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:40px;
+  }
+  .checkout h2{
+    color:var(--white);
+    font-size:34px;
+  }
+  .checkout .lead{
+    color:#C8D0C9;
+    margin-top:10px;
+    max-width:44ch;
+    font-size:15px;
+  }
+  .checkout-line{
+    display:flex;
+    justify-content:space-between;
+    padding:14px 0;
+    border-bottom:1px solid rgba(255,255,255,0.15);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+  }
+  .checkout-line .k{color:#9AA69C; text-transform:uppercase; letter-spacing:0.05em; font-size:11px;}
+  .checkout-line a:hover{color:var(--accent);}
+  .checkout .total{
+    margin-top:20px;
+  }
+  .checkout .total .btn-primary{
+    background:var(--accent);
+    width:100%;
+    justify-content:center;
+    padding:16px;
+    font-size:14px;
+  }
+  .checkout .total .btn-primary:hover{background:#c76f1e;}
+
+  footer{
+    padding:30px 0 50px;
+    text-align:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:760px){
+    .specs{grid-template-columns:1fr;}
+    .spec{border-right:none; border-bottom:1px dashed var(--line);}
+    .listing-top{padding:30px 22px;}
+    .spec{padding:18px 22px;}
+    .about-grid{grid-template-columns:1fr;}
+    .process{grid-template-columns:1fr;}
+    .proc-step{border-right:none; border-bottom:1px dashed var(--line);}
+    .checkout{grid-template-columns:1fr; padding:34px 26px;}
+    .wrap{padding:0 20px;}
+    nav.links{gap:16px;}
+    .exp-right{text-align:left;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <div class="brand">A. KADIRI<span class="dot">.</span></div>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#process">Process</a>
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- HERO — styled as a marketplace product listing -->
+  <section class="hero" id="top">
+    <div class="eyebrow-row">
+      <span class="badge">Available for hire</span>
+      <span class="sku">SKU: VA-ECOM-LISTING-01</span>
+    </div>
+
+    <div class="listing-card">
+      <div class="listing-top">
+        <div class="hero-top-row">
+          <div class="photo-slot">+ ADD<br>PHOTO</div>
+          <div>
+            <h1 class="title">Ahmad "Jhan" Kadiri<br><span class="accent">Product Listing Specialist</span></h1>
+            <p class="role">Virtual Assistant specializing in eCommerce product listings and store management — optimizing catalogs, writing SEO-driven copy, and keeping storefronts running clean.</p>
+          </div>
+        </div>
+
+        <div class="platform-tags">
+          <span class="ptag">eBay</span>
+          <span class="ptag">Poshmark</span>
+          <span class="ptag">Shopify</span>
+        </div>
+
+        <div class="rate-row">
+          <span>Rate: <b class="fillin">[Add your rate, e.g. $5/hr]</b></span>
+          <span>Availability: <b class="fillin">[Add hours/week]</b></span>
+          <span>Timezone: <b class="fillin">[Add your timezone]</b></span>
+        </div>
+
+        <div class="cta-row">
+          <a href="#contact" class="btn btn-primary">Hire Me →</a>
+          <a href="#experience" class="btn btn-ghost">View Skill Set</a>
+          <a href="#" class="btn resume-btn">[Add Resume Link] ↓</a>
+        </div>
+      </div>
+
+      <div class="specs">
+        <div class="spec">
+          <div class="k">Experience</div>
+          <div class="v">1 Year+</div>
+        </div>
+        <div class="spec">
+          <div class="k">Focus</div>
+          <div class="v">Listings &amp; SEO</div>
+        </div>
+        <div class="spec">
+          <div class="k">Tools</div>
+          <div class="v">Sheets / Zik</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section id="results" style="padding-top:0;">
+    <div class="stats-row">
+      <div class="stat">
+        <div class="num fillin">[#]</div>
+        <div class="lbl">Listings Optimized</div>
+      </div>
+      <div class="stat">
+        <div class="num fillin">[#]%</div>
+        <div class="lbl">Visibility Increase</div>
+      </div>
+      <div class="stat">
+        <div class="num fillin">[#]%</div>
+        <div class="lbl">Fewer Listing Errors</div>
+      </div>
+      <div class="stat">
+        <div class="num fillin">[#]</div>
+        <div class="lbl">Stores Managed</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-head">
+      <span class="section-num mono">01</span>
+      <h2>About</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-body">
+        <p>Detail-oriented and results-driven eCommerce Product Listing Specialist with experience managing, optimizing, and maintaining product catalogs across major online marketplaces including eBay, Poshmark, and Shopify.</p>
+        <p>Skilled in crafting SEO-optimized product titles, bullet points, and descriptions to maximize visibility and sales. Proficient in bulk product uploads, keyword research, image and content compliance, and listing performance analysis.</p>
+        <p>Comfortable working with cross-functional teams to ensure accurate product representation, resolve listing errors, and improve product ranking through data-driven strategies.</p>
+      </div>
+      <div class="quote-tag">
+        "Every listing is a chance to rank higher — I treat each one like it matters."
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-head">
+      <span class="section-num mono">02</span>
+      <h2>Skill Set</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="chip-grid">
+      <div class="chip"><span class="idx">01</span>Product Listing</div>
+      <div class="chip"><span class="idx">02</span>Product Research</div>
+      <div class="chip"><span class="idx">03</span>Competitor Research</div>
+      <div class="chip"><span class="idx">04</span>Pricing Strategy</div>
+      <div class="chip"><span class="idx">05</span>Title &amp; SEO Optimization</div>
+      <div class="chip"><span class="idx">06</span>Data Entry — Sheets / Excel</div>
+      <div class="chip"><span class="idx">07</span>Store Setup &amp; Management</div>
+      <div class="chip"><span class="idx">08</span>ZIK Analytics</div>
+    </div>
+
+    <div style="margin-top:24px;">
+      <div class="sub" style="font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-soft); margin-bottom:12px;">Also skilled in (fill in / delete if not applicable)</div>
+      <div class="chip-grid">
+        <div class="chip fillin">+ Email Management</div>
+        <div class="chip fillin">+ Calendar Management</div>
+        <div class="chip fillin">+ Customer Service</div>
+        <div class="chip fillin">+ Social Media Management</div>
+        <div class="chip fillin">+ Basic Bookkeeping</div>
+        <div class="chip fillin">+ Add another skill</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="section-head">
+      <span class="section-num mono">03</span>
+      <h2>How I Work</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="process">
+      <div class="proc-step">
+        <div class="proc-num">1</div>
+        <h3>Research</h3>
+        <p>Product and competitor research, keyword research, and pricing strategy to set every listing up to win.</p>
+        <div class="proof-slot fillin">+ Add photo or screen-recording of your research process (e.g. keyword tool, spreadsheet)</div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">2</div>
+        <h3>List &amp; Optimize</h3>
+        <p>SEO-optimized titles, bullet points, and descriptions — plus bulk uploads and image/content compliance.</p>
+        <div class="proof-slot fillin"><span class="play"></span>+ Add video walkthrough or screenshots of a listing you built/optimized</div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">3</div>
+        <h3>Manage &amp; Analyze</h3>
+        <p>Store management, error correction, and performance analysis to keep rankings climbing.</p>
+        <div class="proof-slot fillin">+ Add photo/video of a performance report or dashboard you worked from</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAMPLE WORK -->
+  <section id="work">
+    <div class="section-head">
+      <span class="section-num mono">04</span>
+      <h2>Sample Work</h2>
+      <div class="section-line"></div>
+    </div>
+    <p style="font-size:13px; color:var(--ink-soft); margin-bottom:20px; max-width:60ch;">Add before/after listing photos, screen recordings of your workflow, or short walkthrough videos — proof of your work builds more trust than a skill list alone.</p>
+
+    <div class="work-grid">
+      <div class="work-card">
+        <div class="work-thumb"><span class="play"></span>[Add photo or video<br>of your work]</div>
+        <div class="work-body">
+          <h4>[Sample Title]</h4>
+          <p>[Short note on what you improved — title SEO, images, pricing, etc.]</p>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-thumb"><span class="play"></span>[Add photo or video<br>of your work]</div>
+        <div class="work-body">
+          <h4>[Sample Title]</h4>
+          <p>[Short note on what you improved — title SEO, images, pricing, etc.]</p>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-thumb"><span class="play"></span>[Add photo or video<br>of your work]</div>
+        <div class="work-body">
+          <h4>[Sample Title]</h4>
+          <p>[Short note on what you improved — title SEO, images, pricing, etc.]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications" style="padding-top:0;">
+    <div class="section-head">
+      <span class="section-num mono">05</span>
+      <h2>Certifications &amp; Training</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="cert-list">
+      <div class="cert-row">
+        <span class="name fillin">[Add certification / course name]</span>
+        <span class="meta">[Issuer · Year]</span>
+      </div>
+      <div class="cert-row">
+        <span class="name fillin">[Add certification / course name]</span>
+        <span class="meta">[Issuer · Year]</span>
+      </div>
+      <div class="cert-row">
+        <span class="name fillin">[Add certification / course name]</span>
+        <span class="meta">[Issuer · Year]</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-head">
+      <span class="section-num mono">06</span>
+      <h2>Experience</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-left">
+        <h3>eCommerce Dropshipper / Product Listing Specialist / Store Manager</h3>
+        <div class="sub">Managed and optimized product catalogs across multiple marketplaces</div>
+        <div class="exp-tags">
+          <span>eBay</span>
+          <span>Poshmark</span>
+          <span>Shopify</span>
+          <span>ZIK Analytics</span>
+        </div>
+      </div>
+      <div class="exp-right">1 Year+<br>Remote</div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="section-head">
+      <span class="section-num mono">07</span>
+      <h2>Client Reviews</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars fillin">★★★★★ [Add rating]</div>
+        <p class="quote fillin">"[Add a client quote or testimonial here — even a short line from a review works.]"</p>
+        <div class="testi-who fillin">— [Client name / platform, e.g. Upwork client]</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars fillin">★★★★★ [Add rating]</div>
+        <p class="quote fillin">"[Add a client quote or testimonial here — even a short line from a review works.]"</p>
+        <div class="testi-who fillin">— [Client name / platform, e.g. Upwork client]</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="checkout">
+      <div>
+        <h2>Let's Work Together</h2>
+        <p class="lead">Ready to clean up your catalog and get your listings ranking. Reach out and let's talk about your store.</p>
+      </div>
+      <div>
+        <div class="checkout-line">
+          <span class="k">Email</span>
+          <a href="mailto:your.email@example.com">your.email@example.com</a>
+        </div>
+        <div class="checkout-line">
+          <span class="k">Upwork</span>
+          <a href="#">Add your Upwork link</a>
+        </div>
+        <div class="checkout-line">
+          <span class="k">LinkedIn</span>
+          <a href="#">Add your LinkedIn link</a>
+        </div>
+        <div class="total">
+          <a href="mailto:your.email@example.com" class="btn btn-primary">Send Me a Message →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  © 2026 Ahmad Adjani S. Kadiri — Product Listing Specialist &amp; Store Manager
+</footer>
+
+</body>
+</html>
